@@ -6,12 +6,6 @@ class UsersController < ApplicationController
     render plain: User.all.map { |user| user.to_pleasant_string }.join("\n")
   end
 
-  def show
-    id = params[:id]
-    user = User.find(id)
-    render plain: user.to_pleasant_string
-  end
-
   def create
     name = params[:name]
     email = params[:email]
