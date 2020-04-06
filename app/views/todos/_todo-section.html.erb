@@ -8,7 +8,7 @@
                        <% todos.each do |todo|%>
                             <li class="TodoItem">
                                 <div class="TodoItem-container">
-                                    <%= form_with(url: "todos/#{todo.id}", method:"put") do %>
+                                    <%= form_with(url: "/todos/#{todo.id}", method:"put") do %>
                                    <div class="TodoItem-checkboxContainer" style="display:flex; align-items:center;">
                                     <%if todo.completed%>
                                          <input class="TodoItem-checkbox" name="completed" type="checkbox" onClick= "this.form.submit()" checked>
@@ -23,7 +23,7 @@
                                         <p class="TodoItem-dueDate"> <%= todo.due_date.to_s(:short)%></p>
                                     <%end%>
                                     <a class="TodoItem-delete" href="javascript:void(0)">
-                                    <%= form_with(url: "todos/#{todo.id}", method:"delete") do %>
+                                    <%= form_with(url: "/todos/#{todo.id}", method:"delete") do %>
                                         <input type="image" value="delete" src="delete.png">
                                         <% end %>
                                     </a>
