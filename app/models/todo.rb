@@ -14,9 +14,7 @@ class Todo < ActiveRecord::Base
   def self.completed
     where(completed: true)
   end
-  def self.not_completed
-    where(completed: false)
-  end
+
   def self.show_list
     puts "My Todo-list\n\n"
 
