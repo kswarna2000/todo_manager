@@ -2,7 +2,7 @@ require "active_record"
 
 class Todo < ActiveRecord::Base
   def self.overdue
-    where("due_date < ?", Date.today)
+    where("due_date < ? and (not completed)", Date.today)
   end
   def self.due_today
     where("due_date = ?", Date.today)
