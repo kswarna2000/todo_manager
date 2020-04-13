@@ -2,21 +2,24 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
+  def new
+    render "/users/new"
+  end
+
   def index
     render plain: User.all.map { |user| user.to_pleasant_string }.join("\n")
   end
 
   def create
-    name = params[:name]
+    first_name = params[:first_name]
+    last_name = params[:last_name]
     email = params[:email]
-    password = params[:password]
     new_user = User.create!(
-      name: name,
+      first_name: first_name,
+      last_name: last_name,
       email: email,
-      password: password,
     )
-    response_text = "Hey, your new user is created with is #{new_user.id} "
-    render plain: response_text
+    redirect_to "/"
   end
 
   def show
