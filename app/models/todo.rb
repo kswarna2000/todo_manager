@@ -17,6 +17,10 @@ class Todo < ActiveRecord::Base
     where(completed: true)
   end
 
+  def self.of_user(user)
+    where(user_id: user.id)
+  end
+
   def self.show_list
     puts "My Todo-list\n\n"
 
