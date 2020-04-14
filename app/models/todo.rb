@@ -2,6 +2,9 @@ require "active_record"
 
 class Todo < ActiveRecord::Base
   belongs_to :user
+  validates :todo_text, presence: true
+  validates :due_date, presence: true
+  validates :todo_text, length: { minimum: 2 }
   def self.overdue
     where("due_date < ? and (not completed)", Date.today).order(:due_date)
   end
