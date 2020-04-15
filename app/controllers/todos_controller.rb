@@ -1,8 +1,6 @@
 # todos_controller.rb
 class TodosController < ApplicationController
   def index
-    #render plain: Todo.order(:due_date).map { |todo| todo.to_pleasant_string }.join("\n")
-    #@todos = Todo.of_user(current_user)
     @todos = current_user.todos
     render "index"
   end
@@ -10,9 +8,7 @@ class TodosController < ApplicationController
   def show
     id = params[:id]
     todo = current_user.todos.find(id)
-
     render "todo"
-    #render plain: todo.to_pleasant_string
   end
 
   def create
